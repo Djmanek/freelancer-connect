@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="container" id="dashboard">
+    <!-- Content will be injected here via JS -->
+  </div>
+
+  <script>
+    const userType = localStorage.getItem("userType");
+    const dashboard = document.getElementById("dashboard");
+
+    if (!userType) {
+      // Redirect if not logged in
+      window.location.href = "index.html";
+    } else if (userType === "freelancer") {
+      dashboard.innerHTML = `
+        <h1>Welcome to Freelancer Connect</h1>
+        <p>Welcome back, Freelancer! Let’s find your next gig.</p>
+
+        <div class="tool-section">
+          <h2>🧰 Freelancer Tools</h2>
+          <div class="card-grid">
+            <div class="tool-card">
+              <h3>🔎 <a href="viewjobs.html" style="color: white; text-decoration: none;">View Jobs</a></h3>
+              <p>Browse open freelance jobs tailored to your skills and interests.</p>
+            </div>
+            <div class="tool-card">
+              <h3>📑 <a href="proposals.html" style="color: white; text-decoration: none;">Proposals</a></h3>
+              <p>Manage the proposals you’ve submitted and track client responses.</p>
+            </div>
+            <div class="tool-card">
+              <h3>💬 <a href="chat.html" style="color: white; text-decoration: none;">Chat</a></h3>
+              <p>Communicate with clients and discuss project requirements directly.</p>
+            </div>
+          </div>
+        </div>
+        <a href="login.html" class="logout" onclick="localStorage.clear()">Logout</a>
+      `;
+    } else if (userType === "client") {
+      dashboard.innerHTML = `
+        <h1>Welcome to Freelancer Connect</h1>
+        <p>Welcome back, Client! Ready to hire top talent?</p>
+
+        <div class="tool-section">
+          <h2>🧰 Client Tools</h2>
+          <div class="card-grid">
+            <div class="tool-card">
+              <h3>📝 Post a Job</h3>
+              <p>Create new job listings and attract the best freelancers.</p>
+            </div>
+            <div class="tool-card">
+              <h3>📬 Review Proposals</h3>
+              <p>View and evaluate proposals submitted by freelancers.</p>
+            </div>
+            <div class="tool-card">
+              <h3>💬 Chat</h3>
+              <p>Communicate with freelancers to finalize job details.</p>
+            </div>
+          </div>
+        </div>
+        <a href="login.html" class="logout" onclick="localStorage.clear()">Logout</a>
+      `;
+    }
+  </script>
+</body>
+</html>

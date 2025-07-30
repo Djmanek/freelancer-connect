@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Freelancer Connect - Login</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="login-container">
+  <h2>Freelancer Connect Login</h2>
+  <div class="tab-buttons">
+    <button id="clientTab" class="active">Client</button>
+    <button id="freelancerTab">Freelancer</button>
+  </div>
+
+  <form id="clientForm" class="active">
+    <label for="clientEmail">Email</label>
+    <input type="email" id="clientEmail" name="email" placeholder="client@example.com" required />
+    
+    <label for="clientPassword">Password</label>
+    <input type="password" id="clientPassword" name="password" placeholder="Enter password" required />
+    
+    <button type="submit">Login as Client</button>
+  </form>
+
+  <form id="freelancerForm">
+    <label for="freelancerEmail">Email</label>
+    <input type="email" id="freelancerEmail" name="email" placeholder="freelancer@example.com" required />
+    
+    <label for="freelancerPassword">Password</label>
+    <input type="password" id="freelancerPassword" name="password" placeholder="Enter password" required />
+    
+    <button type="submit">Login as Freelancer</button>
+  </form>
+
+  <div class="footer-text">
+    Don't have an account? <a href="register.html">Register here!</a>
+  </div>
+</div>
+
+<script>
+  const clientTab = document.getElementById('clientTab');
+  const freelancerTab = document.getElementById('freelancerTab');
+  const clientForm = document.getElementById('clientForm');
+  const freelancerForm = document.getElementById('freelancerForm');
+
+  // Tab switch handlers
+  clientTab.addEventListener('click', () => {
+    clientTab.classList.add('active');
+    freelancerTab.classList.remove('active');
+    clientForm.classList.add('active');
+    freelancerForm.classList.remove('active');
+  });
+
+  freelancerTab.addEventListener('click', () => {
+    freelancerTab.classList.add('active');
+    clientTab.classList.remove('active');
+    freelancerForm.classList.add('active');
+    clientForm.classList.remove('active');
+  });
+
+  // Login handlers
+  clientForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // prevent default form submission
+    localStorage.setItem('userType', 'client'); // save user type
+    window.location.href = 'home.html'; // redirect to home
+  });
+
+  freelancerForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    localStorage.setItem('userType', 'freelancer');
+    window.location.href = 'home.html';
+  });
+</script>
+
+</body>
+</html>
