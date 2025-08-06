@@ -17,7 +17,7 @@
 
     if (!userType) {
       // Redirect if not logged in
-      window.location.href = "index.html";
+      window.location.href = "register.html";
     } else if (userType === "freelancer") {
       dashboard.innerHTML = `
         <h1>Welcome to Freelancer Connect</h1>
@@ -35,7 +35,7 @@
               <p>Manage the proposals you’ve submitted and track client responses.</p>
             </div>
             <div class="tool-card">
-              <h3>💬 <a href="chat.html" style="color: white; text-decoration: none;">Chat</a></h3>
+              <h3>💬 <a href="chat_free.html" style="color: white; text-decoration: none;">Chat</a></h3>
               <p>Communicate with clients and discuss project requirements directly.</p>
             </div>
           </div>
@@ -51,15 +51,15 @@
           <h2>🧰 Client Tools</h2>
           <div class="card-grid">
             <div class="tool-card">
-              <h3>📝 Post a Job</h3>
+              <h3> <a href="postjob.html" style="color: white; text-decoration: none;">📝Post a job</a></h3>
               <p>Create new job listings and attract the best freelancers.</p>
             </div>
             <div class="tool-card">
-              <h3>📬 Review Proposals</h3>
+              <h3> <a href="revproposal.html" style="color: white; text-decoration: none;">📬Review Proposals</a></h3>
               <p>View and evaluate proposals submitted by freelancers.</p>
             </div>
             <div class="tool-card">
-              <h3>💬 Chat</h3>
+              <h3><a href="chat_client.html" style="color: white; text-decoration: none;">💬Chat</a> </h3>
               <p>Communicate with freelancers to finalize job details.</p>
             </div>
           </div>
