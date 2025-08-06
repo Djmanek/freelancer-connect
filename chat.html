@@ -7,6 +7,56 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    this is your chat box
+    <div class="chat-container">
+  <div class="chat-header">
+    <h3>💬 Chat Support</h3>
+  </div>
+
+  <div class="chat-box" id="chatBox">
+  </div>
+
+  <div class="chat-input">
+    <input type="text" id="chatInput" placeholder="Type your message..." />
+    <button id="sendBtn">Send</button>
+  </div>
+</div>
+
+
 </body>
+<script>
+  const sendBtn = document.getElementById('sendBtn');
+  const chatInput = document.getElementById('chatInput');
+  const chatBox = document.getElementById('chatBox');
+
+  function appendMessage(message, type) {
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('chat-message', type);
+    msgDiv.textContent = message;
+    chatBox.appendChild(msgDiv);
+    chatBox.scrollTop = chatBox.scrollHeight; // auto-scroll to latest message
+  }
+
+  function autoReply(userMsg) {
+    const reply = "Thanks for reaching out! We’ll connect you shortly.";
+    setTimeout(() => {
+      appendMessage(reply, 'agent');
+    }, 1000); // simulate typing delay
+  }
+
+  sendBtn.addEventListener('click', () => {
+    const msg = chatInput.value.trim();
+    if (msg) {
+      appendMessage(msg, 'user');
+      chatInput.value = '';
+      autoReply(msg);
+    }
+  });
+
+  chatInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      sendBtn.click();
+    }
+  });
+</script>
+
 </html>
